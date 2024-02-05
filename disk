@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Set the path to check and the threshold percentage
+path="/home/centos"
+threshold_percent=90
+
+# Set the email parameters
+recipient="mtangellapalli4@gmail.com"
+subject="Disk Usage Alert"
+
+# Get disk usage information
+        
+
+echo "Disk usage for '$path': $usage%"
+
+# Check if usage exceeds the threshold
+if [ $usage -gt $threshold_percent ]; then
+    echo "Disk usage exceeds $threshold_percent%. Sending alert email..."
+
+    # Customize the email content
+    message="Disk usage for '$path' exceeds $threshold_percent%. Action may be required."
+
+    # Send email using the mail command
+    echo "$message" | mail -s "$subject" "$recipient"
+
+    echo "Alert email sent."
+fi
